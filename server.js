@@ -1,15 +1,18 @@
 import Fastify from "fastify";
+import dotenv from "dotenv";
+import connectDB from "./plugins/db.js";
+import userRoutes from "./routes/userRoutes.js"
+
+dotenv.config();
 
 const fastify= Fastify({
     logger: true
 });
 
+fastify.register(connectDB)
 
-
-fastify.get('/',()=>{
-    return ({message:'welcome to code world',success:true})
-});
-
+fastify.register(userRoutes)
+  
 
 const start= async() => {
     try {
