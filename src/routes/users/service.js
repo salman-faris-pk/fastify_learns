@@ -13,6 +13,6 @@ export async function createUser(userData) {
 
 export async function getUser(id) {
   const user = await User.findById(id);
-  if (!user) throw new NotFoundError('User');
+  if (!user) throw new NotFoundError('User not found');
   return user;
 }
